@@ -1,15 +1,18 @@
-// Configuração do Firebase
-// IMPORTANTE: Substitua estas configurações pelas suas próprias do Firebase Console
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Configuração do Firebase - ARQUIVO DE EXEMPLO
+// IMPORTANTE: 
+// 1. Copie este arquivo para firebase-config.js
+// 2. Substitua as configurações pelas suas próprias do Firebase Console
+// 3. NUNCA commite o arquivo firebase-config.js real para o repositório
+
 const firebaseConfig = {
-    apiKey: "AIzaSyCapi9n93yJaDJNjbSGqk09_L5AEkTbEmM",
-    authDomain: "sitelinks-ecbd4.firebaseapp.com",
-    projectId: "sitelinks-ecbd4",
-    storageBucket: "sitelinks-ecbd4.firebasestorage.app",
-    messagingSenderId: "168001184505",
-    appId: "1:168001184505:web:7e5420fc8dddee3b82f828",
-    measurementId: "G-GYMSZBZ34E"
-  };
+    apiKey: "SUA_API_KEY_AQUI",
+    authDomain: "seu-projeto.firebaseapp.com",
+    projectId: "seu-projeto-id",
+    storageBucket: "seu-projeto.appspot.com",
+    messagingSenderId: "123456789",
+    appId: "sua-app-id",
+    measurementId: "G-XXXXXXXXXX"
+};
 
 // Validação de domínio para segurança
 function validateDomain() {
