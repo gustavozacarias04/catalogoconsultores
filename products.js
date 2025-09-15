@@ -4,7 +4,7 @@ const products = [
         id: 1,
         name: "MARCA PESSOAL",
         category: "start",
-        image: "1.png",
+        image: "./img/1.png",
         links: [
             { text: "Download", url: "#", primary: true },
             { text: "Preview", url: "#", primary: false }
@@ -14,7 +14,7 @@ const products = [
         id: 2,
         name: "CARTÃO DE VISITA",
         category: "start",
-        image: "2.png",
+        image: "./img/2.png",
         links: [
             { text: "Download", url: "#", primary: true }
         ]
@@ -23,7 +23,7 @@ const products = [
         id: 3,
         name: "CARTÃO DIGITAL",
         category: "start",
-        image: "3.png",
+        image: "./img/3.png",
         links: [
             { text: "Acessar", url: "#", primary: true },
             { text: "Tutorial", url: "#", primary: false }
@@ -33,7 +33,7 @@ const products = [
         id: 4,
         name: "ASSINATURA DE EMAIL",
         category: "start",
-        image: "4.png",
+        image: "./img/4.png",
         links: [
             { text: "Download", url: "#", primary: true }
         ]
@@ -42,7 +42,7 @@ const products = [
         id: 5,
         name: "BADGE",
         category: "start",
-        image: "5.png",
+        image: "./img/5.png",
         links: [
             { text: "Download", url: "#", primary: true },
             { text: "Customizar", url: "#", primary: false }
@@ -52,7 +52,7 @@ const products = [
         id: 6,
         name: "ESTUDO DE MERCADO",
         category: "kits",
-        image: "6.png",
+        image: "./img/6.png",
         links: [
             { text: "Acessar", url: "#", primary: true },
             { text: "Relatório", url: "#", primary: false }
@@ -61,22 +61,6 @@ const products = [
 ];
 
 //START KITS OFFLINE ONLINE NORMAS
-
-// Função para detectar se está rodando no GitHub Pages
-function isGitHubPages() {
-    return window.location.hostname.includes('github.io');
-}
-
-// Função para ajustar caminho das imagens
-function getImagePath(imageName) {
-    if (isGitHubPages()) {
-        // No GitHub Pages, usar caminho relativo
-        return `./img/${imageName}`;
-    } else {
-        // Em desenvolvimento local, usar caminho absoluto
-        return `/img/${imageName}`;
-    }
-}
 
 // Função para renderizar produtos
 function renderProducts(productsToRender = products) {
@@ -87,7 +71,7 @@ function renderProducts(productsToRender = products) {
     productsGrid.innerHTML = productsToRender.map(product => `
         <div class="product-card" data-category="${product.category}">
             <div class="product-image">
-                <img src="${getImagePath(product.image)}" alt="${product.name}" loading="lazy">
+                <img src="${product.image}" alt="${product.name}" loading="lazy">
             </div>
             <div class="product-info">
                 <div class="product-category">${product.category.toUpperCase()}</div>
