@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eleven Studio - Material HUB</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+      <div class="loading-content">
+        <div class="loading-spinner"></div>
+        <p>Verificando autenticação...</p>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">
+            <h1>Eleven Studio<sup></sup></h1>
+          </div>
+
+          <nav class="nav">
+            <ul class="nav-list">
+              <li><a href="#" class="nav-link">SEARCH</a></li>
+              <li><a href="#" class="nav-link" id="loginLink">LOGIN</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h2 class="hero-title">MATERIAL HUB</h2>
+          <p class="hero-description">
+            O Material Hub é um espaço centralizado que oferece recursos de
+            comunicação e design da marca, incluindo materiais visuais premium,
+            modelos exclusivos e ferramentas de alta qualidade, garantindo
+            conteúdos consistentes e mantendo a identidade da marca elegante e
+            profissional.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filters Section -->
+    <section class="filters">
+      <div class="container">
+        <div class="filters-content">
+          <div class="filter-buttons">
+            <button class="filter-btn active" data-category="all">All</button>
+            <button class="filter-btn" data-category="start">
+              Start Eleven
+            </button>
+            <button class="filter-btn" data-category="kits">Tool Kits</button>
+            <button class="filter-btn" data-category="offline">MKT Offline</button>
+            <button class="filter-btn" data-category="online">MKT Online</button>
+            <button class="filter-btn" data-category="normas">
+              Normas Gráficas
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="products">
+      <div class="container">
+        <div class="products-grid" id="productsGrid">
+          <!-- Products will be loaded dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-bottom">
+          <p>&copy; 2025 Eleven Studio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="login-container">
+          <div class="login-card">
+            <h1>Login</h1>
+            <form id="loginForm">
+              <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+
+              <div class="form-group">
+                <label for="password">Senha:</label>
+                <div class="password-input-container">
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    required
+                  />
+                  <button
+                    type="button"
+                    id="togglePassword"
+                    class="toggle-password-btn"
+                    title="Mostrar/Ocultar senha"
+                  >
+                    👁️
+                  </button>
+                </div>
+              </div>
+
+              <div class="form-group remember-me">
+                <label class="checkbox-label">
+                  <input type="checkbox" id="rememberMe" name="rememberMe" />
+                  <span class="checkmark"></span>
+                  Lembrar-me
+                </label>
+              </div>
+
+              <button type="submit" class="login-btn">Entrar</button>
+            </form>
+
+            <div id="errorMessage" class="error-message"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search Modal -->
+    <div id="searchModal" class="modal">
+      <div class="modal-content search-modal">
+        <span class="close">&times;</span>
+        <div class="search-container">
+          <h2>Pesquisar Produtos</h2>
+          <div class="search-input-container">
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Digite o nome do produto ou categoria..."
+              autocomplete="off"
+            />
+            <button id="searchBtn" class="search-btn">Pesquisar</button>
+          </div>
+          <div class="search-results" id="searchResults">
+            <!-- Resultados da pesquisa aparecerão aqui -->
+          </div>
+          <div class="search-suggestions">
+            <h3>Sugestões:</h3>
+            <div class="suggestion-tags">
+              <span class="suggestion-tag" data-search="start"
+                >Start Eleven</span
+              >
+              <span class="suggestion-tag" data-search="kits">Kits</span>
+              <span class="suggestion-tag" data-search="offline">Offline</span>
+              <span class="suggestion-tag" data-search="online">Online</span>
+              <span class="suggestion-tag" data-search="normas">Normas</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- User Info Modal -->
+    <div id="userModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="user-info">
+          <h2>Bem-vindo!</h2>
+          <p id="userEmail">Email: Carregando...</p>
+          <button id="logoutBtn" class="logout-btn">Logout</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="firebase-config.js"></script>
+    <script src="auth.js"></script>
+    <script src="products.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
