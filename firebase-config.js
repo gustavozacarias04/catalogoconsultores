@@ -11,37 +11,6 @@ const firebaseConfig = {
     measurementId: "G-GYMSZBZ34E"
   };
 
-// Validação de domínio para segurança
-function validateDomain() {
-  const allowedDomains = [
-    'seu-usuario.github.io', // Substitua pelo seu domínio do GitHub Pages
-    'localhost',
-    '127.0.0.1'
-  ];
-  
-  const currentDomain = window.location.hostname;
-  
-  if (!allowedDomains.includes(currentDomain)) {
-    console.error('Domínio não autorizado:', currentDomain);
-    document.body.innerHTML = `
-      <div style="display: flex; justify-content: center; align-items: center; height: 100vh; font-family: Arial, sans-serif;">
-        <div style="text-align: center; padding: 20px; border: 1px solid #ccc; border-radius: 8px;">
-          <h2>Acesso Negado</h2>
-          <p>Este site só pode ser acessado através de domínios autorizados.</p>
-        </div>
-      </div>
-    `;
-    return false;
-  }
-  
-  return true;
-}
-
-// Verificar domínio antes de inicializar o Firebase
-if (!validateDomain()) {
-  throw new Error('Domínio não autorizado');
-}
-
 // Inicializar Firebase
 firebase.initializeApp(firebaseConfig);
 
