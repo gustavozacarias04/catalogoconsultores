@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     // Event listener para o checkbox "Lembrar-me"
     rememberMeCheckbox.addEventListener('change', function() {
+        console.log('Checkbox "Lembrar-me" alterado:', this.checked);
         if (!this.checked) {
             // Se desmarcou, limpar dados salvos
             clearRememberedData();
@@ -130,6 +131,9 @@ document.addEventListener('DOMContentLoaded', async function() {
                     passwordInput.value = data.password;
                     rememberMeCheckbox.checked = true;
                     console.log('Dados carregados do "Lembrar-me"');
+                    
+                    // Disparar evento de mudança para garantir que o estado seja atualizado
+                    rememberMeCheckbox.dispatchEvent(new Event('change'));
                 } else {
                     // Dados muito antigos, limpar
                     clearRememberedData();

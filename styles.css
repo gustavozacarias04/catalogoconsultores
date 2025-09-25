@@ -678,36 +678,52 @@ body {
 
 /* Login Modal */
 .login-container {
-    padding: 40px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: var(--primary-bg);
+}
+
+.login-card {
+    background: var(--accent-bg);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-medium);
+    border: 1px solid var(--border-color);
+    width: 100%;
+    max-width: 400px;
+    min-width: 320px;
 }
 
 .login-card h1 {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 700;
     color: var(--text-primary);
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     text-align: center;
 }
 
 /* Formulário */
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     color: var(--text-primary);
     font-weight: 500;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .form-group input {
     width: 100%;
-    padding: 12px 16px;
+    padding: 10px 14px;
     border: 1px solid var(--border-color);
     border-radius: 6px;
-    font-size: 14px;
+    font-size: 13px;
     transition: var(--transition-smooth);
     background: var(--accent-bg);
     color: var(--text-primary);
@@ -727,28 +743,28 @@ body {
 }
 
 .password-input-container input {
-    padding-right: 50px;
+    padding-right: 45px;
 }
 
 /* Botão para mostrar/ocultar senha */
 .toggle-password-btn {
     position: absolute;
-    right: 12px;
+    right: 10px;
     top: 50%;
     transform: translateY(-50%);
     background: none;
     border: none;
     cursor: pointer;
-    padding: 8px;
-    border-radius: 6px;
+    padding: 6px;
+    border-radius: 4px;
     transition: var(--transition-smooth);
     z-index: 1;
     color: var(--text-secondary);
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
 }
 
 .toggle-password-btn:hover {
@@ -758,17 +774,17 @@ body {
 
 /* Checkbox personalizado */
 .remember-me {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .checkbox-label {
     display: flex;
     align-items: center;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 13px;
     color: var(--text-primary);
     user-select: none;
-    padding: 8px 0;
+    padding: 6px 0;
     transition: var(--transition-smooth);
 }
 
@@ -777,13 +793,13 @@ body {
 }
 
 .checkmark {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     border: 2px solid var(--border-color);
     border-radius: 4px;
-    margin-left: 12px;
+    margin-left: 10px;
     position: relative;
-    transition: var(--transition-smooth);
+    transition: all 0.2s ease;
     flex-shrink: 0;
     background: var(--accent-bg);
     display: flex;
@@ -791,12 +807,12 @@ body {
     justify-content: center;
 }
 
-.checkbox-label input[type="checkbox"]:checked + .checkmark {
+.checkbox-label input[type="checkbox"]:checked + .checkbox-text + .checkmark {
     background-color: var(--text-primary);
     border-color: var(--text-primary);
 }
 
-.checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+.checkbox-label input[type="checkbox"]:checked + .checkbox-text + .checkmark::after {
     content: '✓';
     color: var(--accent-bg);
     font-size: 12px;
@@ -805,15 +821,25 @@ body {
 
 .checkbox-label:hover .checkmark {
     border-color: var(--text-primary);
+    transform: scale(1.05);
+}
+
+.checkbox-label input[type="checkbox"]:focus + .checkbox-text + .checkmark {
+    border-color: var(--text-primary);
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.checkbox-label:active .checkmark {
+    transform: scale(0.95);
 }
 
 /* Botões */
 .login-btn {
     width: 100%;
-    padding: 14px;
+    padding: 12px;
     border: none;
     border-radius: 6px;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     cursor: pointer;
     transition: var(--transition-smooth);
@@ -836,13 +862,13 @@ body {
 .error-message {
     background: #FFEBEE;
     color: #CC0000;
-    padding: 12px;
+    padding: 10px;
     border-radius: 4px;
-    margin-top: 15px;
+    margin-top: 12px;
     display: none;
     text-align: center;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 /* User Info Modal */
@@ -865,26 +891,31 @@ body {
 }
 
 .logout-btn {
-    background: #CC0000;
+    background: var(--text-primary);
     color: var(--accent-bg);
     border: none;
-    padding: 12px 24px;
-    border-radius: 4px;
-    font-size: 14px;
+    padding: 10px 16px;
+    font-size: 12px;
     font-weight: 600;
-    cursor: pointer;
-    transition: var(--transition-smooth);
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    border-radius: 4px;
 }
 
 .logout-btn:hover {
-    background: #AA0000;
+    background: var(--text-secondary);
+    transform: translateY(-1px);
 }
 
 .logout-btn:disabled {
     background: var(--text-secondary);
     cursor: not-allowed;
+    transform: none;
 }
 
 /* Responsividade */
@@ -992,7 +1023,16 @@ body {
         justify-content: center;
     }
     
-    .login-container,
+    .login-container {
+        padding: 15px;
+    }
+    
+    .login-card {
+        max-width: 350px;
+        min-width: 280px;
+        padding: 25px;
+    }
+    
     .user-info {
         padding: 30px 20px;
     }
@@ -1036,5 +1076,11 @@ body {
     
     .filter-btn {
         font-size: 12px;
+    }
+    
+    .login-card {
+        max-width: 320px;
+        min-width: 260px;
+        padding: 20px;
     }
 }
